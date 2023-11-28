@@ -1,0 +1,27 @@
+.header {
+    background-color: #232f3e;
+    color: #ffffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .header-search {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .header-options {
+    display: flex;
+  }
+  
+  .header-option {
+    padding: 10px;
+    cursor: pointer;
+  }
