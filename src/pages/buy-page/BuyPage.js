@@ -1,12 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Footer from '../../components/footer/Footer';
+import Header from "../../components/header/Header";
+import CreditCardForm from "../../components/credit-card-form/CreditCardForm";
 import './BuyPage.css';
 
 import sprite from '../../assets/sprite-3-logo-png-transparent.png';
 import cocacola from '../../assets/coca-cola-transparent-coca-cola-free-free-png.webp';
 import pepsi from '../../assets/pepsi-logo-png-transparent.png';
-import Header from "../../components/header/Header";
-import CreditCardForm from "../../components/credit-card-form/CreditCardForm";
 
 export default function BuyPage() {
     const { productId } = useParams();
@@ -21,9 +22,7 @@ export default function BuyPage() {
 
     return (
         <div className="buy-page">
-
-            <Header />
-
+            <Header notHome={true} />
             <div className="product-description">
                 <img src={product.image} alt={product.name} />
                 <h1>{product.name}</h1>
@@ -31,6 +30,7 @@ export default function BuyPage() {
                 <h3>The machine has {product.quantity} in stock!</h3>
             </div>
             <CreditCardForm/>
+            <Footer/>
         </div>
     );
 }
