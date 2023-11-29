@@ -1,28 +1,28 @@
-import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import './CreditCardForm.css';
+import React from "react";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import "./CreditCardForm.css";
 
-const CreditCardForm = () => {
+const CreditCardForm = ({submitFunc}) => {
   // Define Yup validation schema
   const validationSchema = Yup.object().shape({
     card: Yup.number()
-      .typeError('Invalid card number')
-      .required('Credit card number is required')
-      .positive('Card number must be positive')
-      .integer('Card number must be an integer'),
+      .typeError("Invalid card number")
+      .required("Credit card number is required")
+      .positive("Card number must be positive")
+      .integer("Card number must be an integer"),
   });
 
   // Initial form values
   const initialValues = {
-    card: '',
+    card: "",
   };
 
   // Handle form submission
   const handleSubmit = (values, { setSubmitting }) => {
     // Your form submission logic here
     console.log(values);
-
+    submitFunc();
     // Reset form submission state
     setSubmitting(false);
   };

@@ -3,20 +3,20 @@ import './ProductCard.css';
 import {useNavigate } from 'react-router-dom';
 
 function ProductCard({ product }) {
-  const {id, name, price, image, quantity } = product;
+  const {_id, drink_name, price, image, qty } = product;
 
   const navigate = useNavigate();
 
   return (
     <div className="product-card">
-            <img className='product-image' src={image} alt={name}/>
+            <img className='product-image' src={image} alt={drink_name}/>
       <div className="product-details">
-        <p className="product-name">{name}</p>
-        <p className="product-price">${price.toFixed(2)}</p>
-        <button className={quantity === 0 ? "out-of-stock" : "product-button"} 
-                onClick={ () => {navigate( `/${id}` )} }
-                disabled={quantity === 0}>
-                                        {quantity === 0 ? "out of stock" : "buy"}
+        <p className="product-name">{drink_name} {`(${qty} left)`}</p>
+        <p className="product-price">${price}</p>
+        <button className={qty === 0 ? "out-of-stock" : "product-button"} 
+                onClick={ () => {navigate( `/${_id}` )} }
+                disabled={qty === 0}>
+                                        {qty === 0 ? "out of stock" : "buy"}
         </button>
       </div>
     </div>
