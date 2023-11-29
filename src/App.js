@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import BuyPage from './pages/buy-page/BuyPage';
+import TransactionPage from './pages/loadingPage/TransactionPage';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/:productId' element={<BuyPage />} />
+          <Route path='/transaction' element={<TransactionPage />} />
           {/* 
           Uncomment and modify the following lines as needed
           <Route path='/admin' element={<AdminGuard />}>

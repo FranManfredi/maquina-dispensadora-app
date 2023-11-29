@@ -10,9 +10,6 @@ const useSocket = () => {
     socket.on("disconnect", () => {
       console.log("disconnected");
     });
-    socket.on("txn-status", (data) => {
-      console.log(data);
-    });
   }, []);
 
   const sendCall = (drink_id, drink_name) => {
@@ -22,7 +19,7 @@ const useSocket = () => {
     });
   };
 
-  return { sendCall };
+  return { sendCall, socket };
 };
 
 export default useSocket;

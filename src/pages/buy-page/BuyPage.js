@@ -13,12 +13,12 @@ import useSocket from "../../hooks/useSocket";
 export default function BuyPage() {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
-  const { sendCall } = useSocket()
+  const { sendCall, socket } = useSocket();
 
   useEffect(() => {
     fetch("http://localhost:3001/stock")
       .then((res) => res.json())
-      .then((data) =>setProduct(data.find((prod) => prod._id === productId)));
+      .then((data) => setProduct(data.find((prod) => prod._id === productId)));
   }, []);
 
   const getImage = (name) => {
@@ -43,7 +43,9 @@ export default function BuyPage() {
         <h2>{product.price}</h2>
         <h3>The machine has {product.qty} in stock!</h3>
       </div>
-      <CreditCardForm submitFunc={()=>sendCall(product._id, product.drink_name)}/>
+      <CreditCardForm
+        submitFunc={() => sendCall(product._id, product.drink_name)}
+      />
       <Footer />
     </div>
   );
