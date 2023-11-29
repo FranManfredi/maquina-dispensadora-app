@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import CreditCardForm from "../../components/credit-card-form/CreditCardForm";
@@ -14,6 +14,7 @@ export default function BuyPage() {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const { sendCall, socket } = useSocket();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3001/stock")
@@ -44,7 +45,10 @@ export default function BuyPage() {
         <h3>The machine has {product.qty} in stock!</h3>
       </div>
       <CreditCardForm
-        submitFunc={() => sendCall(product._id, product.drink_name)}
+        submitFunc={() => {
+          sendCall(product._id, product.drink_name)
+          navigate("/transaction");
+        }}
       />
       <Footer />
     </div>
